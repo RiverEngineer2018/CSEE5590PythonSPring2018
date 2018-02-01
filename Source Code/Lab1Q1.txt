@@ -1,0 +1,51 @@
+#Lab 1, Question 1
+#Program to enter password that meets password criteria
+
+#Rules
+#Password should have a length between 6 and 16 characters
+#Password should have at least one number.
+#Password should have at least one special character
+#Password should have at least one lowercase and at least one uppercase character
+
+#Load re module
+import re
+
+#Set Check variable for While loop
+Check=1
+
+#Print password requirements
+print("Your password should be between 6 and 16 characters.\n"\
+                   "Your password should have at least one number.\n"\
+                   "Your password should have at least one special character [$@!*].\n"\
+                   "Your pasword should have at least one lowercase and one uppercase character.\n")
+
+#Loop until password meets criteria.
+while Check==1:
+
+    #Enter password
+    Password=input("Please enter your password.\n")
+
+    #Determine password length
+    PasswordLength=len(Password)
+    if PasswordLength <6 or PasswordLength > 16:
+        print("Password does not contain between 6 and 16 characters.")
+
+    #Determine if password contains a number
+    elif not re.search("[0-9]", Password):
+        print("Password does not contain a number.\n")
+
+    # Determine if password contains a lowercase letter
+    elif not re.search("[a-z]", Password):
+        print("Password does not contain a lowercase letter.\n")
+
+    # Determine if password contains an uppercase letter
+    elif not re.search("[A-Z]", Password):
+        print("Password does not contain an uppercase letter.\n")
+
+    # Determine if password contains a special character
+    elif not re.search("[$@!*]", Password):
+        print("Password does not contain one of the special characters $, @, !, or *.\n")
+
+    else:
+        print("Password meets the security requirements.\n")
+        break
